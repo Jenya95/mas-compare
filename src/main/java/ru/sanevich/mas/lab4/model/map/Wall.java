@@ -1,8 +1,8 @@
 package ru.sanevich.mas.lab4.model.map;
 
-public class Wall extends Cell {
-    @Override
-    public String toString() {
-        return "Wall{}";
-    }
+import lombok.ToString;
+import ru.sanevich.mas.lab4.model.Item;
+
+@ToString
+public class Wall extends Item {
 }

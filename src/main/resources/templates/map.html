@@ -7,7 +7,7 @@
     <script th:src="@{/js/bootbox.min.js}"></script>
     <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" th:href="@{/css/my.css}"/>
-    <title>Agent</title>
+    <title>Lab 4</title>
     <style>
         table {
             table-layout: fixed;
@@ -15,17 +15,46 @@
         }
     </style>
 </head>
+<script>
+    let interval;
+    let message;
+    let start;
+</script>
 <body>
-    <div id="planet" th:fragment="mymap">
+    <div id="mymap" th:fragment="mymap">
         <table class="table-bordered">
             <tr th:each="row: ${rows}" style="height: 30px; width: 30px">
-                <td th:each="column : ${row}" th:text="${column.toString()}"
-                    th:class="${column.isEmpty()} ? 'empty drawCell' : 'drawCell'"
-                    th:classappend="${column.isWall()} ? 'wall' : (${column.isStupidAgent()} ? 'agent' : (${column.isFinish()} ? 'finish' : null))">
+                <td th:each="column : ${row}" th:text="${column}"
+                    th:class="${column.getItem().isEmpty()} ? 'empty drawCell' : 'drawCell'"
+                    th:classappend="${column.getItem().isWall()} ? 'wall' : (${column.getItem().isStupidAgent()} ? 'agent' : (${column.getItem().isFinish()} ? 'finish' : null))">
                 >
                 </td>
             </tr>
         </table>
+        <script th:inline="javascript">
+            message = /*[[${msg}]]*/ null;
+            start = /*[[${start}]]*/ null;
+
+            if (message !== null) {
+                clearInterval(interval);
+                bootbox.alert(message);
+            }
+
+            if (start !== null) {
+                slide();
+            }
+        </script>
     </div>
+    <script>
+        window.onload = function start() {
+            slide();
+        };
+
+        function slide() {
+            interval = setInterval(function () {
+                $("#mymap").load("/generate");
+            }, 100);
+        }
+    </script>
 </body>
 </html>
