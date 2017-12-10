@@ -16,10 +16,14 @@
     </style>
 </head>
 <body>
-    <div id="planet" th:fragment="planet">
+    <div id="planet" th:fragment="mymap">
         <table class="table-bordered">
-            <tr th:each="rowFiled: ${planetField}" style="height: 30px; width: 30px">
-                <td th:each="columnFiled : ${rowFiled}" th:text="${columnFiled.getItem()}"></td>
+            <tr th:each="row: ${rows}" style="height: 30px; width: 30px">
+                <td th:each="column : ${row}" th:text="${column.toString()}"
+                    th:class="${column.isEmpty()} ? 'empty drawCell' : 'drawCell'"
+                    th:classappend="${column.isWall()} ? 'wall' : (${column.isStupidAgent()} ? 'agent' : (${column.isFinish()} ? 'finish' : null))">
+                >
+                </td>
             </tr>
         </table>
     </div>

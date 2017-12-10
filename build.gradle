@@ -20,6 +20,7 @@ sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+	jcenter()
 }
 
 
@@ -29,6 +30,5 @@ dependencies {
 	compile('org.webjars:bootstrap:3.3.7')
 	compile('org.webjars:jquery:3.2.1')
 	compile('org.webjars:webjars-locator:0.30')
-	compileOnly('org.projectlombok:lombok')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compileOnly('org.projectlombok:lombok:1.16.18')
 }

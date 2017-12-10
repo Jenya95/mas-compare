@@ -1,14 +1,17 @@
 .path {
     background-color: green;
 }
-.treasures {
-    background-color: yellow;
+.empty {
+    background-color: white;
 }
-.alien {
+.agent {
     background-color: cornflowerblue;
 }
-.base {
+.finish {
     background-color: red !important;
+}
+.wall {
+    background-color: black;
 }
 .drawCell {
     height: 40px !important;
