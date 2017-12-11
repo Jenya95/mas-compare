@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.sanevich.mas.lab4.model.Item;
+import ru.sanevich.mas.lab4.model.agent.SmartAgent;
 import ru.sanevich.mas.lab4.model.agent.StupidAgent;
 import ru.sanevich.mas.lab4.model.map.*;
 import ru.sanevich.mas.lab4.pathfinding.AstarMap;
@@ -12,6 +13,7 @@ import ru.sanevich.mas.lab4.pathfinding.ExampleFactory;
 import ru.sanevich.mas.lab4.pathfinding.Point;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static ru.sanevich.mas.lab4.core.CommonData.*;
@@ -41,9 +43,11 @@ public class MasConfiguration {
             }
         }
 
+        SmartAgent smartAgent = new SmartAgent(cells[0][0], new HashMap<>());
+        cells[0][0].setItem(smartAgent);
 
-        StupidAgent stupidAgent = new StupidAgent(cells[0][0], new ArrayList<>());
-        cells[0][0].setItem(stupidAgent);
+//        StupidAgent stupidAgent = new StupidAgent(cells[0][0], new ArrayList<>());
+//        cells[0][0].setItem(stupidAgent);
 
         cells[X_FINISH][Y_FINISH].setItem(new FinishPoint());
 

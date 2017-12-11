@@ -38,6 +38,7 @@ public class StepService {
         }
 
         myMap.getCells()[next.getX()][next.getY()].setItem(curr.getItem());
+        agent.setCurrentCell(next);
         myMap.getCells()[next.getX()][next.getY()].setX(next.getX());
         myMap.getCells()[next.getX()][next.getY()].setY(next.getY());
 

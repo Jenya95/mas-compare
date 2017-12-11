@@ -1,10 +1,10 @@
-.path {
+.smart-agent {
     background-color: green;
 }
 .empty {
     background-color: white;
 }
-.agent {
+.stupid-agent {
     background-color: cornflowerblue;
 }
 .finish {
