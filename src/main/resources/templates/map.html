@@ -21,40 +21,61 @@
     let start;
 </script>
 <body>
-    <div id="mymap" th:fragment="mymap">
-        <table class="table-bordered">
-            <tr th:each="row: ${rows}" style="height: 30px; width: 30px">
-                <td th:each="column : ${row}" th:text="${column}"
-                    th:class="${column.getItem().isEmpty()} ? 'empty drawCell' : 'drawCell'"
-                    th:classappend="${column.getItem().isWall()} ? 'wall' : (${column.getItem().isStupidAgent()} ? 'stupid-agent' : (${column.getItem().isFinish()} ? 'finish' : (${column.getItem().isSmartAgent()} ? 'smart-agent' : null)))">
+<div id="mymap" th:fragment="mymap">
+    <table class="table-bordered">
+        <tr th:each="row: ${rows}" style="height: 30px; width: 30px">
+            <td th:each="column : ${row}" th:text="${column}"
+                th:class="${column.getItem().isEmpty()} ? 'empty drawCell' : 'drawCell'"
+                th:classappend="${column.getItem().isWall()} ? 'wall' : (${column.getItem().isStupidAgent()} ? 'stupid-agent' : (${column.getItem().isFinish()} ? 'finish' : (${column.getItem().isSmartAgent()} ? 'smart-agent' : null)))">
                 >
-                </td>
-            </tr>
-        </table>
-        <script th:inline="javascript">
-            message = /*[[${msg}]]*/ null;
-            start = /*[[${start}]]*/ null;
+            </td>
+        </tr>
+    </table>
+    <script th:inline="javascript">
+        message = /*[[${msg}]]*/ null;
+        start = /*[[${start}]]*/ null;
 
-            if (message !== null) {
-                clearInterval(interval);
-                bootbox.alert(message);
-            }
+        if (message !== null) {
+            clearInterval(interval);
+            bootbox.alert(message);
+        }
 
-            if (start !== null) {
-                slide();
-            }
-        </script>
-    </div>
-    <script>
-        window.onload = function start() {
+        if (start !== null) {
             slide();
-        };
-
-        function slide() {
-            interval = setInterval(function () {
-                $("#mymap").load("/generate");
-            }, 100);
         }
     </script>
+</div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form th:action="@{/start}" method="post">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="stupid" value="stupid" checked="checked"/>
+                    Stupid agent
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="smart" value="smart"/>
+                    Smart agent
+                </label>
+            </div>
+            <button type="submit" class="btn btn-default">Start!</button>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<script>
+    window.onload = function start() {
+        slide();
+    };
+
+    function slide() {
+        interval = setInterval(function () {
+            $("#mymap").load("/generate");
+        }, 100);
+    }
+</script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package ru.sanevich.mas.lab4.core;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ public class StepService {
 
     private final MyMap myMap;
     private final Logger log = LoggerFactory.getLogger(StepService.class);
+
+    @Setter
     private int counter = 0;
 
     @Getter
