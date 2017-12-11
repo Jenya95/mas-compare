@@ -1,11 +1,19 @@
 .smart-agent {
     background-color: green;
 }
+.smart-agent-font {
+    color: green;
+    font-weight: bold;
+}
 .empty {
     background-color: white;
 }
 .stupid-agent {
     background-color: cornflowerblue;
+}
+.stupid-agent-font {
+    color: cornflowerblue;
+    font-weight: bold;
 }
 .finish {
     background-color: red !important;
