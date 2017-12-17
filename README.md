@@ -10,5 +10,5 @@ The maze is generated only one time on launch application. There are two options
 * Frontend is simple html+css+js
 
 ## Start application
-1. Run SpringBootApplocation from IDE or build jar with maven and run it
+1. Run SpringBootApplocation from IDE or build jar with gradle and run it
 2. http://localhost:8080
